@@ -4,6 +4,12 @@ import throttle from "https://cdn.pagic.org/lodash@4.17.20/esnext/throttle.js";
 import type { PagicLayout } from "https://deno.land/x/pagic@v1.5.1/mod.ts";
 import { classnames } from "./_utils.tsx";
 
+declare global {
+  interface Window {
+    innerHeight: any;
+  }
+}
+
 const SOCIAL_MAP: Record<
   string,
   {
@@ -79,7 +85,7 @@ const Aside: PagicLayout<{
         // @ts-ignore
         document
           .querySelectorAll(".toc a.active")
-          .forEach((node) => node.classList.remove("active"));
+          .forEach((node: any) => node.classList.remove("active"));
         activeAnchor.classList.add("active");
       }
       // @ts-ignore
